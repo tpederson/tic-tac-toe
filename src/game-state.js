@@ -87,7 +87,7 @@ export const GameState = ({gameState}) => {
             gameStateMsg = "Sorry, you lost.";
             break;
     }
-    console.log(`game state: ${gameStateMsg}`);
+    // console.log(`game state: ${gameStateMsg}`);
     return (
         <h2>{gameStateMsg}</h2>
     );
