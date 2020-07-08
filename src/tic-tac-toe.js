@@ -9,6 +9,8 @@ const COMPUTER_LEVEL = {
     STRONG: 0.99,
 };
 
+const COMPUTER_DELAY = 700;
+
 class TicTacToe extends Component {
     constructor(props) {
         super(props);
@@ -68,16 +70,18 @@ class TicTacToe extends Component {
             // console.log(`after player move: ${getGameState(board)}`);
             // TODO: is there a callback here to get rid of need to pass board to getGameState?
             if (this.state.gameState === GAME_STATES.IN_PROGRESS) {
-                this.setState((prevState, props) => {
-                    const computerTile = this.computerMove(prevState.board);
-                    const board = prevState.board.map((tile, idx) => {
-                        return (idx === computerTile) ?
-                            TILE_STATES.COMPUTER :
-                            tile
+                setTimeout(() => {
+                    this.setState((prevState, props) => {
+                        const computerTile = this.computerMove(prevState.board);
+                        const board = prevState.board.map((tile, idx) => {
+                            return (idx === computerTile) ?
+                              TILE_STATES.COMPUTER :
+                              tile
+                        });
+                        // console.log(`after computer move: ${getGameState(board)}`);
+                        return {board, gameState: getGameState(board)};
                     });
-                    // console.log(`after computer move: ${getGameState(board)}`);
-                    return {board, gameState: getGameState(board)};
-                });
+                }, COMPUTER_DELAY);
             }
         });
     }
