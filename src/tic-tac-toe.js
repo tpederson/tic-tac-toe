@@ -5,7 +5,7 @@ import "./tic-tac-toe.css";
 
 const COMPUTER_LEVEL = {
     POOR: 0.5,
-    MEDIOCRE: 0.85,
+    MEDIOCRE: 0.8,
     STRONG: 0.99,
 };
 
